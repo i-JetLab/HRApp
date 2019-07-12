@@ -1,0 +1,50 @@
+/* Global Fonts */
+@font-face {
+    font-family: 'Abel';
+    src: url('fonts/abel.woff2') format('woff2'),
+         url('fonts/abel.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNext-Regular';
+  src: url('fonts/AvenirNextLTPro-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNext-UltLt';
+  src: url('fonts/AvenirNextLTPro-UltLt.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNext-Bold';
+  src: url('fonts/AvenirNextLTPro-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNext-Demi';
+  src: url('fonts/AvenirNextLTPro-Demi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNext-MediumIt';
+  src: url('fonts/AvenirNextLTPro-MediumIt.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font Awesome';
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/webfonts/fa-brands-400.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

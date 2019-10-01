@@ -47,6 +47,16 @@ html {
   overflow: hidden;
 }
 
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 /* index */
 body#index {
   background: linear-gradient(rgba(105, 169, 225, 0.85),rgba(72, 153, 223, 0.95)), url('/assets/img/bg.jpg') center center / cover no-repeat;
@@ -282,14 +292,14 @@ ul.results_list li.results_item .results_item.title_card .bid.eligible {
 
 ul.results_list li.results_item .results_item.title_card.active .eligible, ul.results_list li.results_item .results_item.title_card.active .in.eligible, ul.results_list li.results_item .results_item.title_card.active .bid.eligible  {
   color: #dcdcdc;
-  transition: all 0. 15s;
+  transition: all 0.15s;
 }
 
 ul.results_list li.results_item .results_item.title_card .arrow_right {
   position: absolute;
   right: 30px;
   display: inline-block;
-  transition: all 0. 15s;
+  transition: all 0.15s;
 }
 
 ul.results_list li.results_item .results_item.title_card.active .arrow_right {
@@ -302,7 +312,7 @@ ul.results_list li.results_item .results_item.title_card .preference {
   right: 100px;
   top: 8px;
   display: inline-block;
-  transition: all 0. 15s;
+  transition: all 0.15s;
 }
 
 ul.results_list li.results_item.save {
@@ -397,6 +407,10 @@ ul.results_list .results_item_content {
   top: 30%;
   display: inline-block;
   font-size: 14px;
+}
+
+.bid_count {
+  right: 65px;
 }
 
 .decision.pending {
@@ -561,6 +575,31 @@ ul.results_list .results_item_content {
 
 .show_on_mobile {
   display: none;
+}
+
+.winners_table {
+  overflow: scroll;
+}
+
+.winners_table td {
+  text-align: left !important;
+  padding: 8px !important;
+  margin-left: 5px !important;
+}
+
+.winners_table td.low_pro_button {
+  padding: 0 !important;
+}
+
+.winners_table th {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'AvenirNext-Demi', sans-serif;
+}
+
+.low_pro {
+  font-size: 8px;
+  text-transform: uppercase;
 }
 
 [class*="col-"] {

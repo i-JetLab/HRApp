@@ -7,7 +7,7 @@
 <div class="login_panel">
   <div class="form_section">
     <p>
-      welcome corporate
+      Welcome, please use the login form following.
     </p>
   </div>
   <div class="form_section">

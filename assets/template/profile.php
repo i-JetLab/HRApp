@@ -37,6 +37,8 @@ if(isset($_POST['submit'])) {
        DB::query($update_statement);
        $itt++;
      }
+     $error_text = "Succesfully updated bids.";
+     $error_style = ($error_text) ? "style=\"display:block;\"" : "";
    }
    else
    {
@@ -64,7 +66,7 @@ if(isset($_POST['submit'])) {
         <div class="results_heading">Results</div>
         <div class="col-8 profile">
           <div class="description">
-            You must adjust your preferences before Tuesday, 9am otherwise the system will automatically select your preferences for you. <span class="show_on_mobile"><strong>You must be on a desktop to update your preferences.</strong></span>
+            You must adjust your preferences before Tuesday, 9am otherwise the system will automatically select your preferences for you. The preference rating spans from one (1) to however many jobs you've bid on with one (1) being the most preferred. <span class="show_on_mobile"><strong>You must be on a desktop to update your preferences.</strong></span>
           </div>
           <div class="error_block" <?=$error_style?>>
             <?=$error_text?>

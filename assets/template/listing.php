@@ -44,16 +44,14 @@ if(isset($_GET['bid'])) {
       // Make sure the user has not already bid on the job.
 
       $rand = rand(2313,2310233231);
-      $sql = "INSERT INTO `bids` VALUES (:ran, :eid, :worker_name, :jid, :shift, :job_name, :department, :location, :bdate, '0')";
+      $sql = "INSERT INTO `bids` VALUES (:bid, :eid, :worker_name, :job_name, :jid, :department, :bdate, '0')";
       $query = DB::prepare($sql);
-      $query->execute(['ran' => $rand,
-                       'eid' => $user['eid'],
+      $query->execute(['bid' => NULL,
+                        'eid' => $user['eid'],
                        'worker_name' => $user['name'],
-                       'jid' => $job['jid'],
-                       'shift' => $job['shift'],
                        'job_name' => $job['title'],
+                       'jid' => $job['jid'],
                        'department' => $user['dept'],
-                       'location' => $job['plant'],
                        'bdate' => $user['eligibility']]);
       $error_text = "Successfully bid on job.";
       $error_style = "style=\"display: block; background: #149414;\"";
@@ -119,7 +117,7 @@ if(isset($_GET['bid'])) {
                 echo "
 
                   <li class=\"results_item\">
-                    <div job=\"" . $row['jid'] ."\" class=\"results_item title_card\">
+                    <div job=\"" . $row['jid'] ."\" class=\"no-select results_item title_card\">
                       " . $row['title'] . "
                       <div class=\"hide_on_mobile $eligible_style eligible\">" . $eligible . "</div>
                       <div class=\"arrow_right\">

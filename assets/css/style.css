@@ -456,7 +456,7 @@ ul.results_list .results_item_content {
   margin-right: 20px;
 }
 
-.main_content_add_job .form_section input[type=text], .main_content_add_job .form_section select {
+.main_content_add_job .form_section input[type=text], .main_content_add_job .form_section select, .main_content_add_job .form_section .addit_textarea {
   border: 1px #dcdcdc solid;
   width: 70%;
   padding: 15px;
@@ -471,6 +471,14 @@ ul.results_list .results_item_content {
   margin-top: -28px;
   float: right;
   clear: both;
+}
+
+.main_content_add_job .form_section .addit_textarea {
+  height: 86px;
+  width: 100%;
+  margin-top: 30px;
+  display: block;
+  float: none;
 }
 
 .main_content_add_job .form_section .rate_of_pay_item input[type=text] {

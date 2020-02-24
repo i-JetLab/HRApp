@@ -38,7 +38,7 @@ if(isset($_POST['submit'])) {
        $itt++;
      }
      $error_text = "Succesfully updated bids.";
-     $error_style = ($error_text) ? "style=\"display:block;\"" : "";
+     $error_style = ($error_text) ? "style=\"display:block; background: #149414;\"" : "";
    }
    else
    {
@@ -47,6 +47,19 @@ if(isset($_POST['submit'])) {
      $error_style = ($error_text) /* Make sure error exists. */ ? "style=\"display:block;\"" : "";
    }
 }
+    if(isset($_GET['remove'])) {
+        
+        // Check to see if url being accessed includes ?remove=XXXXX
+        $sql = "SELECT * FROM `bids` WHERE `bid` = '" . $_GET['remove'] . "'";
+        if(DB::query($sql)->fetch()[0] > 0) {
+            // Bid exists
+            $remove_bid = "DELETE from `bids` WHERE `bid` = '" . $_GET['remove'] . "'";
+            DB::query($remove_bid);
+        }
+        
+        // Redirect user
+        header("Location: ./profile");
+    }
 
 ?>
 <div class="col-12"><a href="http://142.93.254.242/profile"><div class="user_profile button active">user profile</div></a><a href="http://142.93.254.242/listing"><div class="job_listing button">job listing</div></a><a href="http://142.93.254.242/logout"><div class="log_out button">log out</div></a></div>
@@ -97,7 +110,7 @@ if(isset($_POST['submit'])) {
                     echo "
                     <li class=\"results_item\">
                       <div job=\"{$row['jid']}\" class=\"results_item title_card\">
-                          {$row['bid_job_name']} <em><strong><a href=\"\" style=\"text-decoration: none; color: red;\">(remove)</a></strong></em>
+                          {$row['bid_job_name']} <em><strong><a href=\"?remove={$row['bid']}\" style=\"text-decoration: none; color: red;\">(remove)</a></strong></em>
                         <div class=\"hide_on_mobile preference\">
                           <input type=\"number\" min=\"1\" max=\"{$bid_count}\" class=\"preference_type\" name=\"{$itt}\" value=\"{$row['preference']}\" />
                         </div>

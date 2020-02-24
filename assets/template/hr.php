@@ -1,4 +1,4 @@
-<div class="col-12"><a href="http://142.93.254.242/hr"><div class="user_profile button active">job list</div></a><a href="http://142.93.254.242/addjob"><div class="job_listing button">add job</div></a><a href="http://142.93.254.242/updateworkers"><div class="job_listing button">update workers</div></a></div>
+<div class="col-12"><a href="/hr"><div class="user_profile button active">job list</div></a><a href="/addjob"><div class="job_listing button">add job</div></a><a href="/updateworkers"><div class="job_listing button">update workers</div></a></div>
 <div class="col-12">
   <div class="main_block">
 
@@ -14,7 +14,7 @@
       <div class="section results">
         <div class="col-12 job_list_line">
         <div class="results_heading">Job List</div>
-        <a href="http://142.93.254.242/addjob"><div class="add_job button active">Add Job</div></a>
+        <a href="/addjob"><div class="add_job button active">Add Job</div></a>
       </div>
         <div class="col-12">
           <div class="search_results">
@@ -32,13 +32,13 @@
                 echo "
                 <li class=\"results_item\">
                   <div job=\"" . $row['jid'] . "\" class=\"no-select results_item title_card\">
-                    " . $row['title'] . "
+                    " . $row['title'] . " (" . $row['dept'] . ")
                     <div class=\"hide_on_mobile bid_count\">
                       <label>Bid Count:</label> " . $num_rows . "
                     </div>
                     <div class=\"arrow_right\">
                         <i class=\"fas fa-chevron-left\"></i>
-                    </div>                      
+                    </div>
                   </div>
                   <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
@@ -68,7 +68,7 @@
                     }
 
                  echo"     </div>
-                  </div>                  
+                  </div>
                 </li>
                 ";
 

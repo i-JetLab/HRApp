@@ -17,17 +17,6 @@ $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
 
-// Security
-if((!isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER'] !== "ijet")) && (!isset($_SERVER['PHP_AUTH_PW']) && ($_SERVER['PHP_AUTH_PW'] !== "lab")))
-{
-  /*
-  ** The user must submit an authorized user and pass to access this page.
-  ** If the request does not provide a user and pass they will prompted for it.
-  */
-  header("WWW-Authenticate: Basic realm=\"HR App\"");
-  header("HTTP/1.0 401 Unauthorized");
-}
-
 // Includes
 require 'db.func.php';
 require 'array.func.php';
@@ -86,8 +75,8 @@ while($row = $query->fetch()) {
   }
 
   // We now need to order both employees in the department (and out) by seniority.
-  $in_dept = array_sort($in_dept, 'date', SORT_NUMERIC);
-  $out_dept = array_sort($out_dept, 'date', SORT_NUMERIC);
+  $in_dept = array_sort($in_dept, 'date', SORT_ASC);
+  $out_dept = array_sort($out_dept, 'date', SORT_ASC);
   $winner[$row['jid']] = $in_dept + $out_dept;
 
 }

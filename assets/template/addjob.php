@@ -26,10 +26,13 @@ if(isset($_POST['submit'])) {
       $r_o_p = implode(",", array($_POST['rate_of_pay1'], $_POST['rate_of_pay2'], $_POST['rate_of_pay3'], $_POST['rate_of_pay4'], $_POST['rate_of_pay5'], $_POST['rate_of_pay6']));
       $jid = "max-" . rand(32423,92373);
 
+      // Parse additional comments
+      $addit_comments = addslashes($_POST['addit_textarea']); // fully parsed comment section
+
       // All inputs have passed error checks and so we will insert the job posting to the database
-      $_query_text = "INSERT INTO `jobs` VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies)";
+      $_query_text = "INSERT INTO `jobs` VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments)";
       $_sql = DB::prepare($_query_text);
-      $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies']]);
+      $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments]);
 
       // Reset $_POST variable so items do not show in form
       $_POST = "";
@@ -56,9 +59,9 @@ if(isset($_POST['submit'])) {
 
 ?>
 
-<div class="col-12"><a href="http://142.93.254.242/hr"><div class="job_list button">job list</div></a>
-                    <a href="http://142.93.254.242/addjob"><div class="add_job_button button active">add job</div></a>
-                    <a href="http://142.93.254.242/updateworkers"><div class="update_workers button">update workers</div></a></div>
+<div class="col-12"><a href="/hr"><div class="job_list button">job list</div></a>
+                    <a href="/addjob"><div class="add_job_button button active">add job</div></a>
+                    <a href="/updateworkers"><div class="update_workers button">update workers</div></a></div>
 <div class="col-12">
   <div class="main_block">
 
@@ -184,6 +187,10 @@ if(isset($_POST['submit'])) {
             <div class="form_section">
               <div class="label">Vacancies</div>
               <input class="input" type="text" value="<?php if(isset($_POST['vacancies'])) { echo $_POST['vacancies']; }?>" name="vacancies" id="vacancies" />
+            </div>
+            <div class="form_section">
+              <div class="label">Additional Information</div>
+              <textarea class="input addit_textarea" id="addit_textarea" name="addit_textarea"><?php if(isset($_POST['addit_textarea'])) { echo $_POST['addit_textarea']; } ?></textarea>
             </div>
             <div class="form_section">
               <div class="label rop">Rate of Pay</div>

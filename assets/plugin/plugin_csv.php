@@ -1,6 +1,6 @@
 <?php
 
-require '../f/db.func.php';
+require '../func/db.func.php';
 
 DB::query("TRUNCATE `users`");
 

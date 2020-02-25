@@ -1,8 +1,8 @@
 <?php
 
-define('DB_DSN', 'mysql:host=localhost;dbname=HR;charset=UTF8;');
-define('DB_USER', 'root');
-define('DB_PASS', 'iJetUI2018');
+define('DB_DSN', 'sqlsrv:server = tcp:hrbid.database.windows.net,1433; Database = hr');
+define('DB_USER', 'hradmin');
+define('DB_PASS', 'Brunswick1000');
 
 class DB {
 

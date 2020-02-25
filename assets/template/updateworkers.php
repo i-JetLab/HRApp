@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
 }
 
 ?>
-<div class="col-12"><a href="./hr"><div class="user_profile button">job list</div></a><a href="./addjob"><div class="job_listing button">add job</div></a><a href="./updateworkers"><div class="job_listing button active">update workers</div></a></div>
+<div class="col-12"><a href="/hr"><div class="user_profile button">job list</div></a><a href="/addjob"><div class="job_listing button">add job</div></a><a href="/updateworkers"><div class="job_listing button active">update workers</div></a></div>
 <div class="col-12">
   <div class="main_block">
 

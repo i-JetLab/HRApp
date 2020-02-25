@@ -16,11 +16,11 @@ error_reporting(E_ALL);
 
       require '../func/db.func.php';
 
-      if(DB::query("SELECT * FROM `users` WHERE `clock_num`= '{$_POST['badge']}'")->fetchColumn() > 0) {
+      if(DB::query("SELECT * FROM users WHERE clock_num= '{$_POST['badge']}'")->fetchColumn() > 0) {
         // exists
 
         $_SESSION['login'] = $_POST['badge'];
-        $user = DB::query("SELECT * FROM `users` WHERE `clock_num`=" . $_SESSION['login'])->fetch();
+        $user = DB::query("SELECT * FROM users WHERE clock_num=" . $_SESSION['login'])->fetch();
 
         echo "<p>You're now logged in. Welcome, {$user['name']}.</p> Click <a href=\"/listing/\">here</a> to continue.";
 

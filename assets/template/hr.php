@@ -22,12 +22,12 @@
 
             <?php
 
-              $sql = "SELECT * FROM `jobs`";
+              $sql = "SELECT * FROM jobs";
               foreach(DB::query($sql) as $row) {
                 // Iterate through each job listing
 
                 // Get the number of bids for this specific job listing.
-                $num_rows = DB::query("SELECT COUNT(*) FROM `bids` WHERE `jid` = '{$row['jid']}'")->fetchColumn();
+                $num_rows = DB::query("SELECT COUNT(*) FROM bids WHERE jid = '{$row['jid']}'")->fetchColumn();
 
                 echo "
                 <li class=\"results_item\">
@@ -44,13 +44,13 @@
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
 
                     // Add winners or add text that says winners don't exist.
-                    $winners_sql = DB::prepare("SELECT count(*) FROM `winners` WHERE `job_assoc` = :job");
+                    $winners_sql = DB::prepare("SELECT count(*) FROM winners WHERE job_assoc = :job");
                     $winners_sql->execute(['job' => $row['jid']]);
 
                     if($winners_sql->fetchColumn() > 0) {
 
                         // Winners exist
-                        $winners_sql = DB::prepare("SELECT * FROM `winners` WHERE `job_assoc` = :job ORDER BY `job_order` ASC");
+                        $winners_sql = DB::prepare("SELECT * FROM winners WHERE job_assoc = :job ORDER BY job_order ASC");
                         $winners_sql->execute(['job' => $row['jid']]);
                         $iter = 1;
 

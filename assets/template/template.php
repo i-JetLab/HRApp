@@ -16,7 +16,7 @@ if($_SESSION['page'] !== "index" && !isset($_SESSION['login'])) {
 
 if(isset($_SESSION['login'])) {
   // User info
-  $user = DB::query("SELECT * FROM `users` WHERE `clock_num`=" . $_SESSION['login'])->fetch();
+  $user = DB::query("SELECT * FROM users WHERE clock_num=" . $_SESSION['login'])->fetch();
 }
 
 ?>

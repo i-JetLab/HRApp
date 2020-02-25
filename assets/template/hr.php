@@ -86,4 +86,4 @@
   </div>
 </div>
 
-<script src="./assets/js/listing.js"></script>
+<script src="/assets/js/listing.js"></script>

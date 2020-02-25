@@ -71,7 +71,7 @@ if(isset($_GET['bid'])) {
       <div class="section search">
         <div class="search_helper_text">type in any keyword to search for jobs</div>
         <div class="col-12">
-          <input type="text" class="search_bar" name="search_bar" />
+          <input onkeyup="searchItems()" type="text" class="search_bar" name="search_bar" id="search_bar" />
         </div>
       </div>
 
@@ -83,7 +83,7 @@ if(isset($_GET['bid'])) {
         <div class="results_heading">Results</div>
         <div class="col-9">
           <div class="search_results">
-          <ul class="results_list">
+          <ul class="results_list" id="results_list">
             <?php
 
               /*
@@ -118,7 +118,7 @@ if(isset($_GET['bid'])) {
 
                   <li class=\"results_item\">
                     <div job=\"" . $row['jid'] ."\" class=\"no-select results_item title_card\">
-                      " . $row['title'] . "
+                      <span id=\"job_title\">" . $row['title'] . "</span>
                       <div class=\"hide_on_mobile $eligible_style eligible\">" . $eligible . "</div>
                       <div class=\"arrow_right\">
                         <i class=\"fas fa-chevron-left\"></i>
@@ -173,7 +173,8 @@ if(isset($_GET['bid'])) {
         </div>
         <div class="col-3">
           <div class="filter_block">
-            <strong>Filter</strong>
+            <strong>Information</strong>
+            <p>Expand each job listing to see more information about that job. If you are eligible, you will be able to apply to that position. Once you have applied to all jobs you are eligible for, visit the user profile page in the top-left section to order each position by preference. You must set preferences for each position you apply to by Tuesday at 9am, otherwise the preferences will be set for you.
           </div>
         </div>
       </div>
@@ -184,4 +185,8 @@ if(isset($_GET['bid'])) {
   </div>
 </div>
 
+
+<script>
+function searchItems(){var e,t,n,s;for(e=document.getElementById("search_bar").value.toUpperCase(),t=document.getElementById("results_list").getElementsByTagName("li"),s=0;s<t.length;s++)(n=t[s].getElementsByTagName("span")[0])&&((n.textContent||n.innerText).toUpperCase().indexOf(e)>-1?t[s].style.display="":t[s].style.display="none")}
+</script>
 <script src="http://142.93.254.242/assets/js/listing.js"></script>

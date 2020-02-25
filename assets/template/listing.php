@@ -61,7 +61,7 @@ if(isset($_GET['bid'])) {
 }
 
 ?>
-<div class="col-12"><a href="http://142.93.254.242/profile"><div class="user_profile button">user profile</div></a><a href="http://142.93.254.242/listing"><div class="job_listing button active">job listing</div></a><a href="http://142.93.254.242/logout"><div class="log_out button">log out</div></a></div>
+<div class="col-12"><a href="./profile"><div class="user_profile button">user profile</div></a><a href="./listing"><div class="job_listing button active">job listing</div></a><a href="./logout"><div class="log_out button">log out</div></a></div>
 <div class="col-12">
   <div class="main_block">
 
@@ -189,4 +189,4 @@ if(isset($_GET['bid'])) {
 <script>
 function searchItems(){var e,t,n,s;for(e=document.getElementById("search_bar").value.toUpperCase(),t=document.getElementById("results_list").getElementsByTagName("li"),s=0;s<t.length;s++)(n=t[s].getElementsByTagName("span")[0])&&((n.textContent||n.innerText).toUpperCase().indexOf(e)>-1?t[s].style.display="":t[s].style.display="none")}
 </script>
-<script src="http://142.93.254.242/assets/js/listing.js"></script>
+<script src="./assets/js/listing.js"></script>

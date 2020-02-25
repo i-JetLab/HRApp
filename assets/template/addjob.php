@@ -30,7 +30,7 @@ if(isset($_POST['submit'])) {
       $addit_comments = addslashes($_POST['addit_textarea']); // fully parsed comment section
 
       // All inputs have passed error checks and so we will insert the job posting to the database
-      $_query_text = "INSERT INTO `jobs` VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments)";
+      $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments)";
       $_sql = DB::prepare($_query_text);
       $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments]);
 
@@ -86,7 +86,7 @@ if(isset($_POST['submit'])) {
                 <option value=""></option>
                 <?php
                   // Select all job listing items
-                  $sql = "SELECT * FROM `jobs_list`";
+                  $sql = "SELECT * FROM jobs_list";
                   foreach(DB::query($sql) as $row) {
                     if(isset($_POST['job_title'])) {
                       if($_POST['job_title']==$row['job']) {
@@ -112,7 +112,7 @@ if(isset($_POST['submit'])) {
                 <option value=""></option>
                 <?php
                   // Select all plant listing items
-                  $sql = "SELECT * FROM `plants_list`";
+                  $sql = "SELECT * FROM plants_list";
                   foreach(DB::query($sql) as $row) {
                     if(isset($_POST['plant'])) {
                       if($_POST['plant']==$row['plant']) {
@@ -138,7 +138,7 @@ if(isset($_POST['submit'])) {
                 <option value=""></option>
                 <?php
                   // Select all shift listing items
-                  $sql = "SELECT * FROM `shifts_list`";
+                  $sql = "SELECT * FROM shifts_list";
                   foreach(DB::query($sql) as $row) {
                     if(isset($_POST['shifts'])) {
                       if($_POST['shift']==$row['shift']) {
@@ -164,7 +164,7 @@ if(isset($_POST['submit'])) {
                 <option value=""></option>
                 <?php
                   // Select all department listing items
-                  $sql = "SELECT * FROM `departments_list`";
+                  $sql = "SELECT * FROM departments_list";
                   foreach(DB::query($sql) as $row) {
                     if(isset($_POST['department'])) {
                       if($_POST['department']==$row['department']) {

@@ -34,17 +34,17 @@ $error_style = ($error_text) ? "style=\"display: block;\"" : "";
 if(isset($_GET['bid'])) {
 
   // Job Info
-  $job = DB::query("SELECT * FROM `jobs` WHERE `jid`='" . $_GET['bid'] . "' LIMIT 1")->fetch();
+  $job = DB::query("SELECT * FROM jobs WHERE jid='" . $_GET['bid'] . "' LIMIT 1")->fetch();
 
   // Insert into the database
   if($decision) {
     // Double check that the user is passsing all restrictions.
 
-    if(DB::query("SELECT * FROM `bids` WHERE `eid` = '{$user['eid']}' AND `jid` = '{$job['jid']}'")->fetchColumn() == 0) {
+    if(DB::query("SELECT * FROM bids WHERE eid = '{$user['eid']}' AND jid = '{$job['jid']}'")->fetchColumn() == 0) {
       // Make sure the user has not already bid on the job.
 
       $rand = rand(2313,2310233231);
-      $sql = "INSERT INTO `bids` VALUES (:bid, :eid, :worker_name, :job_name, :jid, :department, :bdate, '0')";
+      $sql = "INSERT INTO bids VALUES (:bid, :eid, :worker_name, :job_name, :jid, :department, :bdate, '0')";
       $query = DB::prepare($sql);
       $query->execute(['bid' => NULL,
                         'eid' => $user['eid'],
@@ -92,7 +92,7 @@ if(isset($_GET['bid'])) {
               ** HR would like all jobs listed whether or not
               ** the user is eligible for it.
               */
-              $sql = "SELECT * FROM `jobs`";
+              $sql = "SELECT * FROM jobs";
               foreach(DB::query($sql) as $row) {
 
                 // Prepare variables: [bid] dictates whether or not the user has bid on the current job and [payrate] just takes the imploded pay rates and makes them an array.
@@ -104,7 +104,7 @@ if(isset($_GET['bid'])) {
                 $eligible_style = ($decision) ? "" : "in";
 
                 // Checks whether or not the user has bid on the job already: also sets text if the user has already bid on the job.
-                if(DB::query("SELECT COUNT(*) FROM `bids` WHERE `eid` = '{$user['eid']}' AND `jid` = '{$row['jid']}'")->fetchColumn() > 0) {
+                if(DB::query("SELECT COUNT(*) FROM bids WHERE eid = '{$user['eid']}' AND jid = '{$row['jid']}'")->fetchColumn() > 0) {
                   $eligible = "Applied";
                   $eligible_style = "bid";
                   $bid = false;

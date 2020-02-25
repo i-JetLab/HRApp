@@ -13,7 +13,7 @@
         exit(json_encode(['error' => 'Invalid Origin header: ' . $_SERVER['HTTP_ORIGIN']]));
       }
     } else {
-      if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== "http://142.93.254.242/") {
+      if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== "https://hrbid.azurewebsites.net/") {
         exit(json_encode(['error' => 'No Origin header']));
       }
     }

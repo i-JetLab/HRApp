@@ -86,4 +86,4 @@
   </div>
 </div>
 
-<script src="http://142.93.254.242/assets/js/listing.js"></script>
+<script src="./assets/js/listing.js"></script>

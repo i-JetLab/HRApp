@@ -21,12 +21,12 @@ $start = $time;
 require 'db.func.php';
 require 'array.func.php';
 
-DB::query("TRUNCATE `winners`");
+DB::query("TRUNCATE winners");
 
 /* -- Step 1: Organize all bids to have preferences. -- */
 
 // Check preferences of all bids.
-$sql = "SELECT * FROM `bids`"; $blank_users = array();
+$sql = "SELECT * FROM bids"; $blank_users = array();
 foreach(DB::query($sql) as $row) {
   if($row['preference'] == 0) {
     $blank_users[] = $row['eid'];
@@ -35,14 +35,14 @@ foreach(DB::query($sql) as $row) {
 
 // Update preferences for users who have empty preferences.
 foreach(array_unique($blank_users) as $user) {
-  $find_max = (int) DB::query("SELECT MAX(preference) FROM `bids` WHERE `eid` = '$user'")->fetch()[0]; // Finds the highest preference set by user.
-  $query = DB::prepare("SELECT * FROM `bids` WHERE `eid` = :user AND `preference` = '0'");
+  $find_max = (int) DB::query("SELECT MAX(preference) FROM bids WHERE eid = '$user'")->fetch()[0]; // Finds the highest preference set by user.
+  $query = DB::prepare("SELECT * FROM bids WHERE eid = :user AND preference = '0'");
   $query->execute(['user' => $user]);
   while($row = $query->fetch()) { // Go through each bid made by user.
     if($row['preference'] == 0) {
       // Edit only rows that are not set.
       $int = $find_max + 1;
-      DB::query("UPDATE `bids` SET `preference`='{$int}' WHERE `eid`='$user' AND `bid`='{$row['bid']}'");
+      DB::query("UPDATE bids SET preference='{$int}' WHERE eid='$user' AND bid='{$row['bid']}'");
       $find_max++;
     }
   }
@@ -53,14 +53,14 @@ foreach(array_unique($blank_users) as $user) {
 $winners_unique = false; // An iterator variable that will dictate whether each job's winner is unique.
 $winner = array();
 
-$query = DB::prepare("SELECT * FROM `jobs`");
+$query = DB::prepare("SELECT * FROM jobs");
 $query->execute();
 
 while($row = $query->fetch()) {
   // For each job.
   $in_dept = array(); $out_dept = array();
 
-  foreach(DB::query("SELECT * FROM `bids` WHERE `jid` = '{$row['jid']}'") as $srow) {
+  foreach(DB::query("SELECT * FROM bids WHERE jid = '{$row['jid']}'") as $srow) {
     // For each bid for a specific job.
 
     if($srow['bid_department'] == $row['dept']) {
@@ -140,7 +140,7 @@ foreach($winner as $current_job => $winner_item) {
   foreach($winner_item as $current_winner) {
     // For each winner of current job.
     $seniority_date = date('m/d/Y', $current_winner['date']);
-    $sql = DB::prepare("INSERT INTO `winners` VALUES (:job, :bid, :worker_name, :dept, :seniority, :pref, :job_order, :low_pro);");
+    $sql = DB::prepare("INSERT INTO winners VALUES (:job, :bid, :worker_name, :dept, :seniority, :pref, :job_order, :low_pro);");
     $sql->execute(['job' => $current_job_id, 'bid' => $current_winner['bid'], 'worker_name' => $current_winner['name'], 'dept' => $current_winner['dept'], 'seniority' => $seniority_date, 'pref' => $current_winner['preference'], 'job_order' => $iter, 'low_pro' => 0]);
     $iter++;
   }

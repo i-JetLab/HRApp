@@ -29,7 +29,7 @@ html {
 	width: 100%;
 	z-index: 9999;
 	/* Style */
-	background-image: url('http://142.93.254.242/assets/img/loading.gif');
+	background-image: url('./assets/img/loading.gif');
 	background-size: 5%;
 	background-repeat: no-repeat;
 	background-color: #FFF;

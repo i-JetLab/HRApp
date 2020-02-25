@@ -31,9 +31,9 @@ if(isset($_POST['submit'])) {
    // No errors found, update the preferences.
    $itt = 0;
    if(!$repeat && !$missing_preference) {
-     $select = "SELECT * FROM `bids` WHERE `eid` = '" . $user['eid'] . "'";
+     $select = "SELECT * FROM bids WHERE eid = '" . $user['eid'] . "'";
      foreach(DB::query($select) as $row) {
-       $update_statement = "UPDATE `bids` SET `preference` = '" . $_POST[$itt] . "' WHERE `jid` = '" . $row['jid'] . "' AND `eid` = '" . $user['eid'] . "'";
+       $update_statement = "UPDATE bids SET preference = '" . $_POST[$itt] . "' WHERE jid = '" . $row['jid'] . "' AND eid = '" . $user['eid'] . "'";
        DB::query($update_statement);
        $itt++;
      }
@@ -50,10 +50,10 @@ if(isset($_POST['submit'])) {
     if(isset($_GET['remove'])) {
         
         // Check to see if url being accessed includes ?remove=XXXXX
-        $sql = "SELECT * FROM `bids` WHERE `bid` = '" . $_GET['remove'] . "'";
+        $sql = "SELECT * FROM bids WHERE bid = '" . $_GET['remove'] . "'";
         if(DB::query($sql)->fetch()[0] > 0) {
             // Bid exists
-            $remove_bid = "DELETE from `bids` WHERE `bid` = '" . $_GET['remove'] . "'";
+            $remove_bid = "DELETE from bids WHERE bid = '" . $_GET['remove'] . "'";
             DB::query($remove_bid);
         }
         
@@ -98,10 +98,10 @@ if(isset($_POST['submit'])) {
                   */
 
                   // SQL Query
-                  $sql = "SELECT * FROM `bids` WHERE `eid` = :eid";
+                  $sql = "SELECT * FROM bids WHERE eid = :eid";
                   $query = DB::prepare($sql);
                   $query->execute(['eid' => $user['eid']]);
-                  $bid_count = DB::query("SELECT COUNT(*) FROM `bids` WHERE `eid` = " . $user['eid'])->fetchColumn();
+                  $bid_count = DB::query("SELECT COUNT(*) FROM bids WHERE eid = " . $user['eid'])->fetchColumn();
                   $itt = 0;
 
                   // Using the query, display each bid given the information.
@@ -126,7 +126,7 @@ if(isset($_POST['submit'])) {
                   }
 
                   // Empty Bids: If the user has not yet bid on any jobs, then display this.
-                  if(DB::query("SELECT COUNT(*) FROM `bids` WHERE `eid` = " . $user['eid'])->fetchColumn() == 0) {
+                  if(DB::query("SELECT COUNT(*) FROM bids WHERE eid = " . $user['eid'])->fetchColumn() == 0) {
                     echo "
                     <li class=\"results_item\">
                       <div job=\"\" class=\"results_item title_card\">

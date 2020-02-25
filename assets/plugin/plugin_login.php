@@ -6,18 +6,6 @@
    * Reference: Maxwell Newberry (i-Jet)
    */
 
-    // Service Check [security]
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
-      $address = 'http://' . $_SERVER['SERVER_NAME'];
-      if (strpos($address, $_SERVER['HTTP_ORIGIN']) !== 0) {
-        exit(json_encode(['error' => 'Invalid Origin header: ' . $_SERVER['HTTP_ORIGIN']]));
-      }
-    } else {
-      if(!isset($_SERVER['HTTP_REFERER']) || $_SERVER['HTTP_REFERER'] !== "https://hrbid.azurewebsites.net/") {
-        exit(json_encode(['error' => 'No Origin header']));
-      }
-    }
-
     session_start();
 
     if(isset($_POST['badge'])) {

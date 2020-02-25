@@ -2,7 +2,7 @@
 
 require '../func/db.func.php';
 
-DB::query("TRUNCATE `users`");
+DB::query("TRUNCATE users");
 
 $h = fopen("bids.csv", "r");
 $ignore_path = 0;
@@ -22,7 +22,7 @@ while (($data = fgetcsv($h, 0, ",")) !== FALSE)
 
      // Insert into user database
      try {
-       $sql = DB::prepare("INSERT INTO `users` VALUES (:e, :c, :w, :u, :d, :p, :h, :j, :s, :l)");
+       $sql = DB::prepare("INSERT INTO users VALUES (:e, :c, :w, :u, :d, :p, :h, :j, :s, :l)");
        $sql->execute(['e' => $data[3], 'c' => $data[2], 'w' => $data[0], 'u' => $data[1], 'd' => $d, 'p' => $data[9], 'h' => $data[8], 'j' => $data[6],
        's' => $data[4], 'l' => $data[7]]);
      } catch (PDOException $e) {

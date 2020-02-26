@@ -47,19 +47,19 @@ if(isset($_POST['submit'])) {
      $error_style = ($error_text) /* Make sure error exists. */ ? "style=\"display:block;\"" : "";
    }
 }
-    if(isset($_GET['remove'])) {
-        
-        // Check to see if url being accessed includes ?remove=XXXXX
-        $sql = "SELECT * FROM bids WHERE bid = '" . $_GET['remove'] . "'";
-        if(DB::query($sql)->fetch()[0] > 0) {
-            // Bid exists
-            $remove_bid = "DELETE from bids WHERE bid = '" . $_GET['remove'] . "'";
-            DB::query($remove_bid);
-        }
-        
-        // Redirect user
-        header("Location: ./profile");
+if(isset($_GET['remove'])) {
+
+    // Check to see if url being accessed includes ?remove=XXXXX
+    $sql = "SELECT * FROM bids WHERE bid = '" . $_GET['remove'] . "'";
+    if(DB::query($sql)->fetch()[0] > 0) {
+        // Bid exists
+        $remove_bid = "DELETE from bids WHERE bid = '" . $_GET['remove'] . "'";
+        DB::query($remove_bid);
     }
+
+    // Redirect user
+    header("Location: /profile");
+}
 
 ?>
 <div class="col-12"><a href="/profile"><div class="user_profile button active">user profile</div></a><a href="/listing"><div class="job_listing button">job listing</div></a><a href="/logout"><div class="log_out button">log out</div></a></div>

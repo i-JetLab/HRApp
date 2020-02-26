@@ -58,7 +58,7 @@ if(isset($_GET['remove'])) {
     }
 
     // Redirect user
-    header("Location: /profile");
+    //header("Location: /profile");
 }
 
 ?>

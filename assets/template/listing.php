@@ -34,7 +34,7 @@ $error_style = ($error_text) ? "style=\"display: block;\"" : "";
 if(isset($_GET['bid'])) {
 
   // Job Info
-  $job = DB::query("SELECT * FROM jobs WHERE jid='" . $_GET['bid'] . "' LIMIT 1")->fetch();
+  $job = DB::query("SELECT top 1 * FROM jobs WHERE jid='" . $_GET['bid'] . "'")->fetch();
 
   // Insert into the database
   if($decision) {

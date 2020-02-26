@@ -44,8 +44,7 @@ if(isset($_GET['bid'])) {
       // Make sure the user has not already bid on the job.
 
       $rand = rand(2313,2310233231);
-      var_dump(DB::query("SET IDENTITY_INSERT bids ON"));
-      $sql = "INSERT INTO bids (bid, eid, worker_name, bid_job_name, jid, bid_department, senior_date, preference) VALUES (:bid, :eid, :worker_name, :job_name, :jid, :department, :bdate, '0')";
+      $sql = "SET IDENTITY_INSERT bids ON; INSERT INTO bids (bid, eid, worker_name, bid_job_name, jid, bid_department, senior_date, preference) VALUES (:bid, :eid, :worker_name, :job_name, :jid, :department, :bdate, '0'); SET IDENTITY_INSERT bids OFF;";
       $query = DB::prepare($sql);
       $query->execute(['bid' => NULL,
                        'eid' => $user['eid'],
@@ -54,7 +53,6 @@ if(isset($_GET['bid'])) {
                        'jid' => $job['jid'],
                        'department' => $user['dept'],
                        'bdate' => $user['eligibility']]);
-      DB::query("SET IDENTITY_INSERT bids OFF");
       $error_text = "Successfully bid on job.";
       $error_style = "style=\"display: block; background: #149414;\"";
     }

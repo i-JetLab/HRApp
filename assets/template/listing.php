@@ -44,7 +44,7 @@ if(isset($_GET['bid'])) {
       // Make sure the user has not already bid on the job.
 
       $rand = rand(2313,2310233231);
-      $sql = "SET IDENTITY_INSERT bids ON; INSERT INTO bids (eid, worker_name, bid_job_name, jid, bid_department, senior_date, preference) VALUES (:eid, :worker_name, :job_name, :jid, :department, :bdate, '0'); SET IDENTITY_INSERT bids OFF;";
+      $sql = "INSERT INTO bids (eid, worker_name, bid_job_name, jid, bid_department, senior_date, preference) VALUES (:eid, :worker_name, :job_name, :jid, :department, :bdate, '0')";
       $query = DB::prepare($sql);
       $query->execute(['eid' => $user['eid'],
                        'worker_name' => $user['name'],

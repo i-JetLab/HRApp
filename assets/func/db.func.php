@@ -1,9 +1,5 @@
 <?php
 
-define('DB_DSN', 'sqlsrv:server = tcp:hrbid.database.windows.net,1433; Database = hr');
-define('DB_USER', 'hradmin');
-define('DB_PASS', 'Brunswick1000');
-
 class DB {
 
     private static $objInstance;
@@ -25,6 +21,11 @@ class DB {
      * @return $objInstance;
      */
     public static function getInstance(  ) {
+        $connstr = explode(getenv('SQLAZURECONNSTR_HRDBConnString'), '|');
+        
+        define('DB_DSN', $connstr[0]);
+        define('DB_USER', $connstr[1]);
+        define('DB_PASS', $connstr[2]);
 
         if(!self::$objInstance){
             self::$objInstance = new PDO(DB_DSN, DB_USER, DB_PASS);

@@ -144,6 +144,7 @@ if(isset($_GET['bid'])) {
                               <td>79-104 weeks</td>
                               <td>105-130 weeks</td>
                               <td>131+ weeks</td>
+                              <td>Active Employees as of 8/30/2009</td>
                             </tr>
                             <tr>
                               <td>{$payrate[0]}</td>
@@ -152,6 +153,7 @@ if(isset($_GET['bid'])) {
                               <td>{$payrate[3]}</td>
                               <td>{$payrate[4]}</td>
                               <td>{$payrate[5]}</td>
+                              <td>{$payrate[6]}</td>
                             </tr>
                           </table>
                         </div>

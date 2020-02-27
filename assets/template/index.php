@@ -1,6 +1,9 @@
+<?php
+  var_dump(getenv('SQLAZURECONNSTR_HRDBConnString'));
+?>
 <div class="brunswick_logo">
   <a href="https://brunswick.com">
-    <img src="/assets/img/logo.png">
+    <img src="/assets/img/logo.png" />
   </a>
 </div>
 

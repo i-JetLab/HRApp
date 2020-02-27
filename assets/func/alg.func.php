@@ -21,7 +21,7 @@ $start = $time;
 require 'db.func.php';
 require 'array.func.php';
 
-DB::query("TRUNCATE winners");
+DB::query("DELETE from winners");
 
 /* -- Step 1: Organize all bids to have preferences. -- */
 

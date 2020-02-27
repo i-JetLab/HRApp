@@ -20,12 +20,31 @@ class DB {
      * @param
      * @return $objInstance;
      */
-    public static function getInstance(  ) {
-        $connstr = explode(getenv('SQLAZURECONNSTR_HRDBConnString'), '|');
+    public static function getInstance() {
+        $connectstr_dbhost = '';
+        $connectstr_dbname = '';
+        $connectstr_dbusername = '';
+        $connectstr_dbpassword = '';
         
-        define('DB_DSN', $connstr[0]);
-        define('DB_USER', $connstr[1]);
-        define('DB_PASS', $connstr[2]);
+        $value = getenv('SQLAZURECONNSTR_HRDBConnString');
+        
+        $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value); 
+        $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
+        $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+        $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+        
+        // ** MySQL settings - You can get this info from your web host ** //
+        /** The name of the database for WordPress */
+        define('DB_NAME', $connectstr_dbname);
+        
+        /** MySQL database username */
+        define('DB_USER', $connectstr_dbusername);
+        
+        /** MySQL database password */
+        define('DB_PASSWORD', $connectstr_dbpassword);
+        
+        /** MySQL hostname : this contains the port number in this format host:port . Port is not 3306 when using this feature*/
+        define('DB_HOST', $connectstr_dbhost);
 
         if(!self::$objInstance){
             self::$objInstance = new PDO(DB_DSN, DB_USER, DB_PASS);

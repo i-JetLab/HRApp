@@ -32,11 +32,6 @@ class DB {
         $connectstr_dbname = preg_replace("/^.*Initial Catalog=(.+?);.*$/", "\\1", $value);
         $connectstr_dbusername = preg_replace("/^.*User ID=(.+?);.*$/", "\\1", $value);
         $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
-   
-        //define('DB_NAME', $connectstr_dbname);
-        //define('DB_USER', $connectstr_dbusername);
-        //define('DB_PASS', $connectstr_dbpassword);
-        //define('DB_HOST', $connectstr_dbhost);
 
         if(!self::$objInstance){
             self::$objInstance = new PDO("sqlsrv:server = {$connectstr_dbhost}; Database = {$connectstr_dbname}", $connectstr_dbusername, $connectstr_dbpassword);

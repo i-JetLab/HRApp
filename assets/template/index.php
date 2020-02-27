@@ -1,5 +1,5 @@
 <?php
-  var_dump(getenv('SQLAZURECONNSTR_SQLAZURECONNSTR_HRDBConnString	'));
+  var_dump(getenv('SQLAZURECONNSTR_SQLAZURECONNSTR_HRDBConnString'));
 ?>
 <div class="brunswick_logo">
   <a href="https://brunswick.com">

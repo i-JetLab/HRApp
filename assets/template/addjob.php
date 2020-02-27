@@ -15,15 +15,15 @@ if(isset($_POST['submit'])) {
   // Form has been posted.
 
   if($_POST['job_title'] !== "" && $_POST['plant'] !== "" && $_POST['shift'] !== "" && $_POST['department'] !== "" && $_POST['vacancies'] !== "" && $_POST['rate_of_pay1'] !== "" && $_POST['rate_of_pay2'] !== ""
-  && $_POST['rate_of_pay3'] !== "" && $_POST['rate_of_pay4'] !== "" && $_POST['rate_of_pay5'] !== "" && $_POST['rate_of_pay6'] !== "") {
+  && $_POST['rate_of_pay3'] !== "" && $_POST['rate_of_pay4'] !== "" && $_POST['rate_of_pay5'] !== "" && $_POST['rate_of_pay6'] !== "" && $_POST['rate_of_pay7'] !== "") {
     // All inputs have been given.
 
-    if(is_numeric($_POST['rate_of_pay1']) && is_numeric($_POST['rate_of_pay2']) && is_numeric($_POST['rate_of_pay3']) && is_numeric($_POST['rate_of_pay4']) && is_numeric($_POST['rate_of_pay5']) && is_numeric($_POST['rate_of_pay6']))
+    if(is_numeric($_POST['rate_of_pay1']) && is_numeric($_POST['rate_of_pay2']) && is_numeric($_POST['rate_of_pay3']) && is_numeric($_POST['rate_of_pay4']) && is_numeric($_POST['rate_of_pay5']) && is_numeric($_POST['rate_of_pay6']) && is_numeric($_POST['rate_of_pay7']))
     {
       // Rate of pay is all numeric.
 
       // Set variables
-      $r_o_p = implode(",", array($_POST['rate_of_pay1'], $_POST['rate_of_pay2'], $_POST['rate_of_pay3'], $_POST['rate_of_pay4'], $_POST['rate_of_pay5'], $_POST['rate_of_pay6']));
+      $r_o_p = implode(",", array($_POST['rate_of_pay1'], $_POST['rate_of_pay2'], $_POST['rate_of_pay3'], $_POST['rate_of_pay4'], $_POST['rate_of_pay5'], $_POST['rate_of_pay6'], $_POST['rate_of_pay7']));
       $jid = "max-" . rand(32423,92373);
 
       // Parse additional comments
@@ -217,19 +217,25 @@ if(isset($_POST['submit'])) {
                   <div class="rate_of_pay_label">
                     79-104 weeks
                   </div>
-                  <input class="input" type="text" value="<?php if(isset($_POST['vacancies'])) { echo $_POST['rate_of_pay4']; } ?>" name="rate_of_pay4" id="rate_of_pay4" />
+                  <input class="input" type="text" value="<?php if(isset($_POST['rate_of_pay4'])) { echo $_POST['rate_of_pay4']; } ?>" name="rate_of_pay4" id="rate_of_pay4" />
                 </div>
                 <div class="rate_of_pay_item">
                   <div class="rate_of_pay_label">
                     105-130 weeks
                   </div>
-                  <input class="input" type="text" value="<?php if(isset($_POST['vacancies'])) { echo $_POST['rate_of_pay5']; } ?>" name="rate_of_pay5" id="rate_of_pay5" />
+                  <input class="input" type="text" value="<?php if(isset($_POST['rate_of_pay5'])) { echo $_POST['rate_of_pay5']; } ?>" name="rate_of_pay5" id="rate_of_pay5" />
                 </div>
                 <div class="rate_of_pay_item">
                   <div class="rate_of_pay_label">
                     131+ weeks
                   </div>
-                  <input class="input" type="text" value="<?php if(isset($_POST['vacancies'])) { echo $_POST['rate_of_pay6']; } ?>" name="rate_of_pay6" id="rate_of_pay6" />
+                  <input class="input" type="text" value="<?php if(isset($_POST['rate_of_pay6'])) { echo $_POST['rate_of_pay6']; } ?>" name="rate_of_pay6" id="rate_of_pay6" />
+                </div>
+                <div class="rate_of_pay_item">
+                  <div class="rate_of_pay_label">
+                    Before 2009
+                  </div>
+                  <input class="input" type="text" value="<?php if(isset($_POST['rate_of_pay7'])) { echo $_POST['rate_of_pay7']; } ?>" name="rate_of_pay7" id="rate_of_pay7" />
                 </div>
               </div>
             </div>

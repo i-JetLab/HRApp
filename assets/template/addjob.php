@@ -13,47 +13,55 @@
 
 if(isset($_POST['submit'])) {
   // Form has been posted.
+  
+  if(strlen($_POST['rforpost_textarea']) < 256) {
 
-  if($_POST['job_title'] !== "" && $_POST['plant'] !== "" && $_POST['shift'] !== "" && $_POST['department'] !== "" && $_POST['vacancies'] !== "" && $_POST['rforpost_textarea'] !== "" && $_POST['rate_of_pay1'] !== "" && $_POST['rate_of_pay2'] !== ""
-  && $_POST['rate_of_pay3'] !== "" && $_POST['rate_of_pay4'] !== "" && $_POST['rate_of_pay5'] !== "" && $_POST['rate_of_pay6'] !== "" && $_POST['rate_of_pay7'] !== "") {
-    // All inputs have been given.
+    if($_POST['job_title'] !== "" && $_POST['plant'] !== "" && $_POST['shift'] !== "" && $_POST['department'] !== "" && $_POST['vacancies'] !== "" && $_POST['rforpost_textarea'] !== "" && $_POST['rate_of_pay1'] !== "" && $_POST['rate_of_pay2'] !== ""
+    && $_POST['rate_of_pay3'] !== "" && $_POST['rate_of_pay4'] !== "" && $_POST['rate_of_pay5'] !== "" && $_POST['rate_of_pay6'] !== "" && $_POST['rate_of_pay7'] !== "") {
+      // All inputs have been given.
 
-    if(is_numeric($_POST['rate_of_pay1']) && is_numeric($_POST['rate_of_pay2']) && is_numeric($_POST['rate_of_pay3']) && is_numeric($_POST['rate_of_pay4']) && is_numeric($_POST['rate_of_pay5']) && is_numeric($_POST['rate_of_pay6']) && is_numeric($_POST['rate_of_pay7']))
-    {
-      // Rate of pay is all numeric.
+      if(is_numeric($_POST['rate_of_pay1']) && is_numeric($_POST['rate_of_pay2']) && is_numeric($_POST['rate_of_pay3']) && is_numeric($_POST['rate_of_pay4']) && is_numeric($_POST['rate_of_pay5']) && is_numeric($_POST['rate_of_pay6']) && is_numeric($_POST['rate_of_pay7']))
+      {
+        // Rate of pay is all numeric.
 
-      // Set variables
-      $r_o_p = implode(",", array($_POST['rate_of_pay1'], $_POST['rate_of_pay2'], $_POST['rate_of_pay3'], $_POST['rate_of_pay4'], $_POST['rate_of_pay5'], $_POST['rate_of_pay6'], $_POST['rate_of_pay7']));
-      $jid = "max-" . rand(32423,92373);
+        // Set variables
+        $r_o_p = implode(",", array($_POST['rate_of_pay1'], $_POST['rate_of_pay2'], $_POST['rate_of_pay3'], $_POST['rate_of_pay4'], $_POST['rate_of_pay5'], $_POST['rate_of_pay6'], $_POST['rate_of_pay7']));
+        $jid = "max-" . rand(32423,92373);
 
-      // Parse additional comments
-      $addit_comments = addslashes($_POST['addit_textarea']); // fully parsed comment section
-      $rforpost = addslashes($_POST['rforpost_textarea']);
+        // Parse additional comments
+        $addit_comments = addslashes($_POST['addit_textarea']); // fully parsed comment section
+        $rforpost = addslashes($_POST['rforpost_textarea']);
 
-      // All inputs have passed error checks and so we will insert the job posting to the database
-      $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments, :rforpost)";
-      $_sql = DB::prepare($_query_text);
-      $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost]);
+        // All inputs have passed error checks and so we will insert the job posting to the database
+        $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments, :rforpost)";
+        $_sql = DB::prepare($_query_text);
+        $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost]);
 
-      // Reset $_POST variable so items do not show in form
-      $_POST = "";
+        // Reset $_POST variable so items do not show in form
+        $_POST = "";
 
-      // Set error_block to be success_block
-      $error_text = "Successfully added job to the database.";
-      $error_style = "style=\"display:block; background: #7DEC70;\"";
+        // Set error_block to be success_block
+        $error_text = "Successfully added job to the database.";
+        $error_style = "style=\"display:block; background: #7DEC70;\"";
+      }
+      else {
+        // Rate of pay is not all numeric.
+        $error_style = "style=\"display:block;\"";
+        $error_text = "Please check your rate of pay or vacancies and make sure they are numbers (not symbols except periods or letters).";
+      }
+
     }
+
     else {
-      // Rate of pay is not all numeric.
+      // Missing fields.
       $error_style = "style=\"display:block;\"";
-      $error_text = "Please check your rate of pay or vacancies and make sure they are numbers (not symbols except periods or letters).";
+      $error_text = "Please check to make sure all your fields are filled in and re-submit.";
     }
-
-  }
-
-  else {
-    // Missing fields.
+    
+  } else {
+    // Longer than 255 characters.
     $error_style = "style=\"display:block;\"";
-    $error_text = "Please check to make sure all your fields are filled in and re-submit.";
+    $error_text = "Please check your additional comments or reason for posting, they must be shorter than 255 characters.";
   }
 
 }

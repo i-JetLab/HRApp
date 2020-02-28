@@ -14,7 +14,7 @@
 if(isset($_POST['submit'])) {
   // Form has been posted.
 
-  if($_POST['job_title'] !== "" && $_POST['plant'] !== "" && $_POST['shift'] !== "" && $_POST['department'] !== "" && $_POST['vacancies'] !== "" && $_POST['rate_of_pay1'] !== "" && $_POST['rate_of_pay2'] !== ""
+  if($_POST['job_title'] !== "" && $_POST['plant'] !== "" && $_POST['shift'] !== "" && $_POST['department'] !== "" && $_POST['vacancies'] !== "" && $_POST['rforpost_textarea'] !== "" && $_POST['rate_of_pay1'] !== "" && $_POST['rate_of_pay2'] !== ""
   && $_POST['rate_of_pay3'] !== "" && $_POST['rate_of_pay4'] !== "" && $_POST['rate_of_pay5'] !== "" && $_POST['rate_of_pay6'] !== "" && $_POST['rate_of_pay7'] !== "") {
     // All inputs have been given.
 
@@ -28,11 +28,12 @@ if(isset($_POST['submit'])) {
 
       // Parse additional comments
       $addit_comments = addslashes($_POST['addit_textarea']); // fully parsed comment section
+      $rforpost = addslashes($_POST['rforpost_textarea']);
 
       // All inputs have passed error checks and so we will insert the job posting to the database
-      $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments)";
+      $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments, :rforpost)";
       $_sql = DB::prepare($_query_text);
-      $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments]);
+      $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost]);
 
       // Reset $_POST variable so items do not show in form
       $_POST = "";
@@ -191,6 +192,10 @@ if(isset($_POST['submit'])) {
             <div class="form_section">
               <div class="label">Additional Information</div>
               <textarea class="input addit_textarea" id="addit_textarea" name="addit_textarea"><?php if(isset($_POST['addit_textarea'])) { echo $_POST['addit_textarea']; } ?></textarea>
+            </div>
+            <div class="form_section">
+              <div class="label">Reason for Posting</div>
+              <textarea class="input rforpost_textarea" id="rforpost_textarea" name="rforpost_textarea"><?php if(isset($_POST['rforpost_textarea'])) { echo $_POST['rforpost_textarea']; } ?></textarea>
             </div>
             <div class="form_section">
               <div class="label rop">Rate of Pay</div>

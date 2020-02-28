@@ -191,11 +191,11 @@ if(isset($_POST['submit'])) {
             </div>
             <div class="form_section">
               <div class="label">Additional Information</div>
-              <textarea class="input addit_textarea" id="addit_textarea" name="addit_textarea" placeholder="(max char 255)"><?php if(isset($_POST['addit_textarea'])) { echo $_POST['addit_textarea']; } ?></textarea>
+              <textarea class="input addit_textarea" id="addit_textarea" name="addit_textarea" placeholder="(max characters: 255)"><?php if(isset($_POST['addit_textarea'])) { echo $_POST['addit_textarea']; } ?></textarea>
             </div>
             <div class="form_section">
               <div class="label">Reason for Posting</div>
-              <textarea class="input rforpost_textarea" id="rforpost_textarea" name="rforpost_textarea" placeholder="(max char 255)"><?php if(isset($_POST['rforpost_textarea'])) { echo $_POST['rforpost_textarea']; } ?></textarea>
+              <textarea class="input rforpost_textarea" id="rforpost_textarea" name="rforpost_textarea" placeholder="(max characters: 255)"><?php if(isset($_POST['rforpost_textarea'])) { echo $_POST['rforpost_textarea']; } ?></textarea>
             </div>
             <div class="form_section">
               <div class="label rop">Rate of Pay</div>

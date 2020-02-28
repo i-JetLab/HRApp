@@ -456,7 +456,7 @@ ul.results_list .results_item_content {
   margin-right: 20px;
 }
 
-.main_content_add_job .form_section input[type=text], .main_content_add_job .form_section select, .main_content_add_job .form_section .addit_textarea {
+.main_content_add_job .form_section input[type=text], .main_content_add_job .form_section select, .main_content_add_job .form_section .addit_textarea, .main_content_add_job .form_section .rforpost_textarea {
   border: 1px #dcdcdc solid;
   width: 70%;
   padding: 15px;

@@ -600,7 +600,7 @@ ul.results_list .results_item_content {
 }
 
 td.delete_button {
-	color: #d13d32;
+	background: #d13d32;
 	padding: 0 !important;
 }
 

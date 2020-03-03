@@ -47,7 +47,7 @@
                           </table>
                       </div>
                       <table>
-                        <tr><td><span style="color:red;" class=\"low_pro button active\">Delete Listing</span></td></tr>
+                        <tr><td><span class=\"low_pro button active\">Delete Listing</span></td></tr>
                       </table>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
 

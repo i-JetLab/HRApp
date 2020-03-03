@@ -44,11 +44,9 @@
                       <div job=\"" . $row['jid'] . "\" class=\"results_item\">
                           <table>
                               <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
+                              <tr><td><span class=\"low_pro button delete\">Delete Listing</span></td></tr>
                           </table>
                       </div>
-                      <table>
-                        <tr><td><span class=\"low_pro button active\">Delete Listing</span></td></tr>
-                      </table>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
 
                     // Add winners or add text that says winners don't exist.

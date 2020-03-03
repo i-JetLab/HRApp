@@ -41,6 +41,11 @@
                     </div>
                   </div>
                   <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">
+                      <table>
+                          <tr><th>Reason for posting:</th><td>{$winner['rforpost']}</td></tr>
+                      </table>
+                  </div>
+                  <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
 
                     // Add winners or add text that says winners don't exist.
@@ -55,7 +60,6 @@
                         $iter = 1;
 
                         echo "<table class=\"winners_table\">";
-                        echo "<tr><th>Reason for posting:</th><td>{$winner['rforpost']}</td></tr>";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                         foreach($winners_sql as $winner) {
                             echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><span class=\"low_pro button active\">Confirm winner</span></td></tr>";

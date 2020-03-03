@@ -44,6 +44,7 @@
                       <div job=\"" . $row['jid'] . "\" class=\"results_item\">
                           <table>
                               <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
+                              <tr><td><span class=\"delete button active\">Delete listing</span></td></tr>
                           </table>
                       </div>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";

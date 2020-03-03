@@ -29,6 +29,7 @@
                       // Bid exists
                       $remove_job = "DELETE from jobs WHERE jid = '" . $_GET['remove'] . "'";
                       DB::query($remove_job);
+                      echo "test";
                   }
               }
 

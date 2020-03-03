@@ -41,11 +41,11 @@
                     </div>
                   </div>
                   <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">
-                      <table>
-                          <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
-                      </table>
-                  </div>
-                  <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">
+                      <div job=\"" . $row['jid'] . "\" class=\"results_item\">
+                          <table>
+                              <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
+                          </table>
+                      </div>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
 
                     // Add winners or add text that says winners don't exist.

@@ -599,6 +599,10 @@ ul.results_list .results_item_content {
   padding: 0 !important;
 }
 
+td.delete_button {
+  padding: 0 !important;
+}
+
 .winners_table th {
   text-align: center;
   font-weight: bold;

@@ -25,6 +25,8 @@
               if(isset($_GET['remove'])) {
                   // Check to see if url being accessed includes ?remove=XXXXX
                   $sql = "SELECT * FROM jobs WHERE jid = '" . $_GET['remove'] . "'";
+                  echo "test 1";
+                  var_dump(DB::query($sql)->fetch());
                   if(DB::query($sql)->fetch()[0] > 0) {
                       // Bid exists
                       $remove_job = "DELETE from jobs WHERE jid = '" . $_GET['remove'] . "'";

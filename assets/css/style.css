@@ -605,6 +605,12 @@ ul.results_list .results_item_content {
   font-family: 'AvenirNext-Demi', sans-serif;
 }
 
+.button.delete {
+  background: #eb4034;
+  color: #FFFFFF;
+  box-shadow: -1px -1px 2px #dcdcdc;
+}
+
 .low_pro {
   font-size: 8px;
   text-transform: uppercase;
@@ -658,11 +664,5 @@ ul.results_list .results_item_content {
   .show_on_mobile {
     display: block;
   }
-	
-.button.delete {
-  background: #eb4034;
-  color: #FFFFFF;
-  box-shadow: -1px -1px 2px #dcdcdc;
-}
 
 }

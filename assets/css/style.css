@@ -658,5 +658,11 @@ ul.results_list .results_item_content {
   .show_on_mobile {
     display: block;
   }
+	
+.button.delete {
+  background: #eb4034;
+  color: #FFFFFF;
+  box-shadow: -1px -1px 2px #dcdcdc;
+}
 
 }

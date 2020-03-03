@@ -21,6 +21,16 @@
           <ul class="results_list">
 
             <?php
+  
+              if(isset($_GET['remove'])) {
+                  // Check to see if url being accessed includes ?remove=XXXXX
+                  $sql = "SELECT * FROM jobs WHERE jid = '" . $_GET['remove'] . "'";
+                  if(DB::query($sql)->fetch()[0] > 0) {
+                      // Bid exists
+                      $remove_job = "DELETE from jobs WHERE jid = '" . $_GET['remove'] . "'";
+                      DB::query($remove_job);
+                  }
+              }
 
               $sql = "SELECT * FROM jobs";
               foreach(DB::query($sql) as $row) {
@@ -44,7 +54,7 @@
                       <div job=\"" . $row['jid'] . "\" class=\"results_item\">
                           <table>
                               <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
-                              <tr><td><span class=\"delete low_pro button active\">Delete Listing</span></td><td><span class=\"low_pro button active\">Edit Listing</span></td></tr>
+                              <tr><td><em><strong><a href=\"?remove={$row['jid']}\" style=\"text-decoration: none; color: red;\">(remove listing)</a></strong></em></td></tr>
                           </table>
                       </div>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";

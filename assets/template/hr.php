@@ -42,7 +42,7 @@
                   </div>
                   <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">
                       <table>
-                          <tr><th>Reason for posting:</th><td>{$winner['rforpost']}</td></tr>
+                          <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
                       </table>
                   </div>
                   <div job=\"" . $row['jid'] . "\" class=\"results_item_content\">

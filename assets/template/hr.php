@@ -54,7 +54,7 @@
                       <div job=\"" . $row['jid'] . "\" class=\"results_item\">
                           <table>
                               <tr><th>Reason for posting:</th><td>{$row['rforpost']}</td></tr>
-                              <tr><td><em><a href=\"?remove={$row['jid']}\" style=\"text-decoration: none; color: red;\"><span class=\"low_pro button active\" style=\"background:red;\">Remove listing</span></a></em></td></tr>
+                              <tr><td><em><a onclick=\"removeJob({$row['jid']});\" style=\"text-decoration: none; color: red;\"><span class=\"low_pro button active\" style=\"background:red;\">Remove listing</span></a></em></td></tr>
                           </table>
                       </div>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item winners\">";
@@ -102,4 +102,9 @@
   </div>
 </div>
 
+<script>
+  var removeJob = function(jobId) {
+    alert(jobId);
+  };
+</script>
 <script src="/assets/js/listing.js"></script>

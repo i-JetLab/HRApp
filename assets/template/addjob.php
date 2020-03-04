@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
         // All inputs have passed error checks and so we will insert the job posting to the database
         $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments, :rforpost, :removedate)";
         $_sql = DB::prepare($_query_text);
-        $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost, 'removedate' => $removedate]);
+        $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost, 'removedate' => $_POST['removedate']]);
 
         // Reset $_POST variable so items do not show in form
         $_POST = "";

@@ -133,6 +133,9 @@ if(isset($_GET['bid'])) {
                       <div job=\"" . $row['jid'] . "\" class=\"results_item department\">
                         <strong>Additional Information</strong>:<br />" . $row['additional_comments'] . "
                       </div>
+                      <div job=\"" . $row['jid'] . "\" class=\"results_item department\">
+                        <strong>Job Removal Date</strong>:<br />" . $row['removedate'] . "
+                      </div>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item work_schedule\">
                         <strong>Pay Rate</strong>:
                         <div class=\"results_table\">

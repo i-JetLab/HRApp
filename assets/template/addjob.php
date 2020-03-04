@@ -33,9 +33,9 @@ if(isset($_POST['submit'])) {
         $rforpost = addslashes($_POST['rforpost_textarea']);
 
         // All inputs have passed error checks and so we will insert the job posting to the database
-        $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments, :rforpost)";
+        $_query_text = "INSERT INTO jobs VALUES (:jid, :title, :dept, :plant, :shift, :compensation, :vacancies, :additional_comments, :rforpost, :removedate)";
         $_sql = DB::prepare($_query_text);
-        $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost]);
+        $_sql->execute(['jid' => $jid, 'title' => $_POST['job_title'], 'dept' => $_POST['department'], 'plant' => $_POST['plant'], 'shift' => $_POST['shift'], 'compensation' => $r_o_p, 'vacancies' => $_POST['vacancies'], 'additional_comments' => $addit_comments, 'rforpost' => $rforpost, 'removedate' => $removedate]);
 
         // Reset $_POST variable so items do not show in form
         $_POST = "";
@@ -204,6 +204,10 @@ if(isset($_POST['submit'])) {
             <div class="form_section">
               <div class="label">Reason for Posting</div>
               <textarea class="input rforpost_textarea" id="rforpost_textarea" name="rforpost_textarea" placeholder="(max characters: 255)"><?php if(isset($_POST['rforpost_textarea'])) { echo $_POST['rforpost_textarea']; } ?></textarea>
+            </div>
+            <div class="form_section">
+              <div class="label">Removal Date</div>
+              <input class="input" type="text" placeholder="MM/DD/YYYY" value="<?php if(isset($_POST['removedate'])) { echo $_POST['removedate']; }?>" name="removedate" id="removedate" />
             </div>
             <div class="form_section">
               <div class="label rop">Rate of Pay</div>

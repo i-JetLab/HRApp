@@ -84,11 +84,11 @@
                         $winners_sql = DB::prepare("SELECT * FROM winners WHERE job_assoc = :job ORDER BY job_order ASC");
                         $winners_sql->execute(['job' => $row['jid']]);
                         $iter = 1;
-
+                        var_dump($row['jid']);
                         echo "<table class=\"winners_table\">";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                           foreach($winners_sql as $winner) {
-                            var_dump($row['jid']);
+                            
                             //$tmp_jid = explode($row['jid'], "-");
                             //var_dump($tmp_jid);
                             //$tmp_jid = $tmp_jid[0] . "%2D" . $tmp_jid[1];

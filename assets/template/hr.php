@@ -42,7 +42,7 @@
                 $employee_info = DB::query("SELECT * FROM users WHERE eid = {$query_info['eid']}")->fetch();
                 
                 $employee_id = $query_info['eid'];
-                $employee_name = $query_info['worker_name'];
+                $worker_name = $query_info['worker_name'];
                 
                 $new_dept = $query_info['bid_department'];
                 $new_job_name = $query_info['bid_job_name'];
@@ -52,7 +52,7 @@
                 
                 $_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
                 $_sql = DB::prepare($_query_text);
-                $_sql->execute(['new_department' => $new_dept, 'new_job_name' => $new_job_name, 'old_department' => $old_dept, 'old_job_name' => $old_job_name, 'eid' => $employee_id]);
+                $_sql->execute(['new_department' => $new_dept, 'new_job_name' => $new_job_name, 'old_department' => $old_dept, 'old_job_name' => $old_job_name, 'eid' => $employee_id. 'worker_name' => $worker_name]);
            
               }
          

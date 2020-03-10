@@ -88,7 +88,8 @@
                         echo "<table class=\"winners_table\">";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                         foreach($winners_sql as $winner) {
-                            echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?job_id={$row['jid']}&bid_id={$winner['bid']}\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
+                            $jid = str_replace($row['jid'], "-", "%2D");
+                            echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?job_id=$jid&bid_id={$winner['bid']}\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
                             $iter++;
                         }
                         echo "</table>";

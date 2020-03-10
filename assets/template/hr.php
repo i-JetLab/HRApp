@@ -52,7 +52,7 @@
                 
                 $_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
                 $_sql = DB::prepare($_query_text);
-                $_sql->execute(['new_department' => $new_dept, 'new_job_name' => $new_job_name, 'old_department' => $old_dept, 'old_job_name' => $old_job_name, 'eid' => $employee_id. 'worker_name' => $worker_name]);
+                $_sql->execute(['new_department' => $new_dept, 'new_job_name' => $new_job_name, 'old_department' => $old_dept, 'old_job_name' => $old_job_name, 'eid' => $employee_id, 'worker_name' => $worker_name]);
            
               }
          

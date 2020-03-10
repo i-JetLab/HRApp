@@ -34,15 +34,17 @@
           
               if(isset($_GET['bid_id']) && isset($_GET['action']) && $_GET['action'] == "confirm_winner") {
                 // If both variables are set and are != ""
-                $query_info = DB::query("SELECT eid, jid FROM bids WHERE bid = {$_GET['bid_id']}")->fetch();
-                echo "SELECT * FROM jobs WHERE jid = {$query_info['jid']}";
-                $job_info = DB::query("SELECT * FROM jobs WHERE jid = {$query_info['jid']}")->fetch();
+                $query_info = DB::query("SELECT eid, jid, bid_job_name, bid_department FROM bids WHERE bid = {$_GET['bid_id']}")->fetch();
+                
+                //echo "SELECT * FROM jobs WHERE jid = {$query_info['jid']}";
+                //$job_info = DB::query("SELECT * FROM jobs WHERE jid = {$query_info['jid']}")->fetch();
+                
                 $employee_info = DB::query("SELECT * FROM users WHERE eid = {$query_info['eid']}")->fetch();
                 
                 $employee_id = $query_info['eid'];
                 
-                $new_dept = $job_info['dept'];
-                $new_job_name = $job_info['title'];
+                $new_dept = $query_info['bid_department'];
+                $new_job_name = $query_info['bid_job_name'];
                 
                 $old_dept = $employee_info['dept'];
                 $old_job_name = $employee_info['job_title'];

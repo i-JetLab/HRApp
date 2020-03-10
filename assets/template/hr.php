@@ -34,16 +34,24 @@
           
               if(isset($_GET['bid_id']) && isset($_GET['action']) && $_GET['action'] == "confirm_winner") {
                 // If both variables are set and are != ""
-                $employee_info = DB::query("SELECT * FROM winners WHERE bid = {$_GET['bid_id']}")->fetch();
-                var_dump($employee_info);
-                //$job_info = DB::query("SELECT * FROM jobs WHERE jid = {$_GET['job_id']}")->fetch();
-               
+                $query_info = DB::query("SELECT eid, jid FROM bids WHERE bid = {$_GET['bid_id']}")->fetch();
+                $job_info = DB::query("SELECT * FROM jobs WHERE jid = {$query_info['jid']}")->fetch();
+                $employee_info = DB::query("SELECT * FROM users WHERE eid = {$query_info['eid']}")->fetch();
+                
+                $employee_id = $query_info['eid'];
+                
+                $new_dept = $job_info['dept'];
+                $new_job_name = $job_info['title'];
+                
+                $old_dept = $employee_info['dept'];
+                $old_job_name = $employee_info['job_title'];
+                
+                $_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
+                $_sql = DB::prepare($_query_text);
+                $_sql->execute(['new_department' => $new_dept, 'new_job_name' => $new_job_name, 'old_department' => $old_dept, 'old_job_name' => $old_job_name, 'eid' => $employee_id]);
+           
               }
-          
-              //$_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
-              //$_sql = DB::prepare($_query_text);
-              //$_sql->execute(['new_department' => $_POST['new_department'], 'new_job_name' => $_POST['new_job_name'], 'old_department' => $_POST['old_department'], 'old_job_name' => $_POST['old_job_name'], 'eid' => $_POST['eid']]);
-
+         
               // Reset $_POST variable so items do not show in form
               $_POST = "";
 

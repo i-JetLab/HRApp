@@ -34,7 +34,6 @@
           
               if(isset($_GET['bid_id']) && isset($_GET['job_id'])) {
                 // If both variables are set and are != ""
-                echo $_GET['job_id'];
                 $employee_info = DB::query("SELECT * FROM winners WHERE bid = {$_GET['bid_id']}")->fetch();
                 $job_info = DB::query("SELECT * FROM jobs WHERE jid = {$_GET['job_id']}")->fetch();
                 
@@ -88,8 +87,9 @@
 
                         echo "<table class=\"winners_table\">";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
-                        foreach($winners_sql as $winner) {
-                            $jid = str_replace($row['jid'], "-", "%2D");
+                          foreach($winners_sql as $winner) {
+                            $tmp_jid = explode($row['jid'], "-");
+                            $tmp_jid = $tmp_jid[0] . "%2D" . $tmp_jid[1];
                             echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?job_id=$jid&bid_id={$winner['bid']}\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
                             $iter++;
                         }

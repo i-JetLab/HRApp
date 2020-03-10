@@ -34,6 +34,7 @@
           
               if(isset($_GET['bid_id']) && isset($_GET['job_id'])) {
                 // If both variables are set and are != ""
+                echo $_GET['job_id'];
                 $employee_info = DB::query("SELECT * FROM winners WHERE bid = {$_GET['bid_id']}")->fetch();
                 $job_info = DB::query("SELECT * FROM jobs WHERE jid = {$_GET['job_id']}")->fetch();
                 

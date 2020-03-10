@@ -32,9 +32,9 @@
                   }
               }
           
-              $_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
-              $_sql = DB::prepare($_query_text);
-              $_sql->execute(['new_department' => $_POST['new_department'], 'new_job_name' => $_POST['new_job_name'], 'old_department' => $_POST['old_department'], 'old_job_name' => $_POST['old_job_name'], 'eid' => $_POST['eid']]);
+              //$_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
+              //$_sql = DB::prepare($_query_text);
+              //$_sql->execute(['new_department' => $_POST['new_department'], 'new_job_name' => $_POST['new_job_name'], 'old_department' => $_POST['old_department'], 'old_job_name' => $_POST['old_job_name'], 'eid' => $_POST['eid']]);
 
               // Reset $_POST variable so items do not show in form
               $_POST = "";

@@ -32,12 +32,12 @@
                   }
               }
           
-              if(isset($_GET['bid_id']) && isset($_GET['job_id'])) {
+              if(isset($_GET['bid_id']) && isset($_GET['action') && $_GET['action'] == "confirm_winner") {
                 // If both variables are set and are != ""
                 $employee_info = DB::query("SELECT * FROM winners WHERE bid = {$_GET['bid_id']}")->fetch();
-                $job_info = DB::query("SELECT * FROM jobs WHERE jid = {$_GET['job_id']}")->fetch();
-                
                 var_dump($employee_info);
+                //$job_info = DB::query("SELECT * FROM jobs WHERE jid = {$_GET['job_id']}")->fetch();
+               
               }
           
               //$_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
@@ -88,10 +88,7 @@
                         echo "<table class=\"winners_table\">";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                         foreach($winners_sql as $winner) {
-                            $tmp_jid = explode("-", $row['jid']);
-                            $jid = $tmp_jid[0] . "%2D" . $tmp_jid[1];
-                            echo $jid;
-                            echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?job_id={$jid}&bid_id={$winner['bid']}\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
+                            echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?bid_id={$winner['bid']}&action=confirm_winner\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
                             $iter++;
                         }
                         echo "</table>";

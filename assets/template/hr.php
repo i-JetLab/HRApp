@@ -104,7 +104,7 @@
 
 <script>
   var removeJob = function(jobId) {
-    if (window.confirm("Are you sure?")) {
+    if (window.confirm("Are you sure you would like to remove this job listing?")) {
         location.href = "?remove=" + jobId;
     }
   };

@@ -90,7 +90,7 @@
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                         foreach($winners_sql as $winner) {
                             $tmp_jid = explode("-", $row['jid']);
-                            var_dump($tmp_jid);
+                            $jid = $tmp_jid[0] . "%2D" . $tmp_jid[1];
                             echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?job_id=$jid&bid_id={$winner['bid']}\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
                             $iter++;
                         }

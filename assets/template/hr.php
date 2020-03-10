@@ -31,6 +31,13 @@
                       DB::query($remove_job);
                   }
               }
+          
+              $_query_text = "INSERT INTO confirmed_winners VALUES (:new_department, :new_job_name, :old_department, :old_job_name, :eid)";
+              $_sql = DB::prepare($_query_text);
+              $_sql->execute(['new_department' => $_POST['new_department'], 'new_job_name' => $_POST['new_job_name'], 'old_department' => $_POST['old_department'], 'old_job_name' => $_POST['old_job_name'], 'eid' => $_POST['eid']]);
+
+              // Reset $_POST variable so items do not show in form
+              $_POST = "";
 
               $sql = "SELECT * FROM jobs";
               foreach(DB::query($sql) as $row) {
@@ -73,7 +80,7 @@
                         echo "<table class=\"winners_table\">";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                         foreach($winners_sql as $winner) {
-                            echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><span class=\"low_pro button active\">Confirm winner</span></td></tr>";
+                            echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
                             $iter++;
                         }
                         echo "</table>";

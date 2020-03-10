@@ -128,7 +128,7 @@ if(isset($_GET['bid'])) {
                         $error_text
                       </div> -->
                       <div job=\"" . $row['jid'] . "\" class=\"results_item department\">
-                        <strong>Department</strong>: " . $row['dept'] . "<br /><strong>Plant</strong>: " . $row['plant'] . "<br /><strong>Shift</strong>: " . $row['shift'] . "<br /><strong>Vacancies</strong>: " . $row['vacancies'] . "<br /><strong>Removal Date</strong>: " . $row['remdate'] . "
+                        <strong>Department</strong>: " . $row['dept'] . "<br /><strong>Plant</strong>: " . $row['plant'] . "<br /><strong>Shift</strong>: " . $row['shift'] . "<br /><strong>Vacancies</strong>: " . $row['vacancies'] . "<br /><strong>Removal Date</strong>: " . $row['removedate'] . "
                       </div>
                       <div job=\"" . $row['jid'] . "\" class=\"results_item department\">
                         <strong>Additional Information</strong>:<br />" . $row['additional_comments'] . "

@@ -32,7 +32,7 @@
                   }
               }
           
-              if(isset($_GET['bid_id']) && isset($_GET['action') && $_GET['action'] == "confirm_winner") {
+              if(isset($_GET['bid_id']) && isset($_GET['action']) && $_GET['action'] == "confirm_winner") {
                 // If both variables are set and are != ""
                 $employee_info = DB::query("SELECT * FROM winners WHERE bid = {$_GET['bid_id']}")->fetch();
                 var_dump($employee_info);

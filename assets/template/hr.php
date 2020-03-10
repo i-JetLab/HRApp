@@ -84,14 +84,14 @@
                         $winners_sql = DB::prepare("SELECT * FROM winners WHERE job_assoc = :job ORDER BY job_order ASC");
                         $winners_sql->execute(['job' => $row['jid']]);
                         $iter = 1;
-                        var_dump($row['jid']);
+                        $jid = $row['jid'];
+                      
                         echo "<table class=\"winners_table\">";
                         echo "<tr><th>Worker Name</th><th>Seniority Date</th><th>Worker's Department</th><th>Preference</th></tr>";
                           foreach($winners_sql as $winner) {
                             
-                            //$tmp_jid = explode($row['jid'], "-");
-                            //var_dump($tmp_jid);
-                            //$tmp_jid = $tmp_jid[0] . "%2D" . $tmp_jid[1];
+                            $tmp_jid = explode($jid, "-");
+                            $tmp_jid = $tmp_jid[0] . "%2D" . $tmp_jid[1];
                             echo "<tr><td>$iter. {$winner['worker_name']}</td><td>{$winner['seniority_date']}</td><td>{$winner['worker_dept']}</td><td style='text-align: center !important;'><strong>{$winner['preference']}</strong></td><td><a href=\"?job_id=$jid&bid_id={$winner['bid']}\" class=\"low_pro button active\">Confirm winner</a></td></tr>";
                             $iter++;
                         }
